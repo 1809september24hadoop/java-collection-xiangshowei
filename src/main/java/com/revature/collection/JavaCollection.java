@@ -17,7 +17,7 @@ public interface JavaCollection {
 	 * f(153) = [1,5,3]
 	 * f(32767) = [3,2,7,6,7]
 	 * 
-	 * Rule: Do NOT use the String or any related class.
+	 * Rule: Do NOT use String or any related class.
 	 * 
 	 * Hint: Use modulus.
 	 * 
