@@ -1,5 +1,6 @@
 package com.revature.collection;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -44,14 +45,65 @@ public class JavaCollectionSolution implements JavaCollection {
 
 	@Override
 	public boolean isPalindrome(int n) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return false;
+		if(n < 0) {
+			throw new IllegalArgumentException();
+		}
+		
+		boolean isPalindrome = false;
+		
+		LinkedList<Integer> linkedList = (LinkedList<Integer>) digits(n);
+		
+		if(linkedList.size() == 1) {
+			isPalindrome = true;
+		}
+		
+		else if(linkedList.size() == 2) {
+			if(linkedList.peekFirst() == linkedList.peekLast()) {
+				isPalindrome = true;
+			}
+		}
+		
+		else {
+			for(int i = 0; i< linkedList.size()/2; i++) {
+				int firstInt = linkedList.pollFirst();
+				int lastInt = linkedList.pollLast();
+				if(!(firstInt == lastInt)) {
+					return isPalindrome;
+				}
+				
+				else {
+					isPalindrome = true;
+				}
+			}
+		}
+		
+		return isPalindrome;
 	}
 
 	@Override
 	public Map<Character, Integer> countCharacters(String string) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+		if(string == null) {
+			throw new IllegalArgumentException();
+		}
+		
+		if(string.isEmpty()) {
+			return new HashMap<Character, Integer>();
+		}
+		
+		HashMap<Character, Integer> hm = new HashMap<Character, Integer>();
+		char[] chars = string.toCharArray();
+		for(int i = 0; i < chars.length; i++) {
+			Character curChar = chars[i];
+			if(!hm.containsKey(curChar)) {
+				hm.put(curChar, 1);
+			}
+			
+			else {
+				hm.put(curChar, hm.get(curChar) + 1);
+			}
+		}
+		
+		return hm;
 	}
 
 }
