@@ -3,6 +3,11 @@ package com.revature.collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
+
+import com.revature.story.Graphite;
+import com.revature.story.Ink;
+import com.revature.story.WritingTool;
 
 public class JavaCollectionSolutionDriver {
 
@@ -13,6 +18,16 @@ public class JavaCollectionSolutionDriver {
 		for(int i : list) {
 			System.out.println(i);
 		}
+		System.out.println();
+		
+		Set<WritingTool> set = new TreeSet<WritingTool>();
+		set.add(new Graphite("pencil", 0.5, "gray"));
+		set.add(new Graphite("mechanical pencil", 0.3, "gray"));
+		set.add(new Ink("fountain pen", 0.1, "black"));
+		for(WritingTool wt : set) {
+			System.out.println("The " + wt.getName() + " has a tip size of " + wt.getTipSize() + "mm");
+		}
+		System.out.println();
 		
 		System.out.println(jcs.balancedBrackets("()"));
 		System.out.println(jcs.balancedBrackets("{}"));

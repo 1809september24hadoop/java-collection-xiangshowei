@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.revature.story.WritingTool;
+
 /**
  * Same rules, suggestions and guidelines as first assignment.
  * 
@@ -36,7 +38,7 @@ public interface JavaCollection {
 	 * 
 	 * @throws IllegalArgumentException if the array is null.
 	**/
-	public Set<?> sort(Object[] array) throws IllegalArgumentException;
+	public Set<?> sort(WritingTool[] array) throws IllegalArgumentException;
 	
 	/**
 	 * 3. The Brackets problem of the first assignment.

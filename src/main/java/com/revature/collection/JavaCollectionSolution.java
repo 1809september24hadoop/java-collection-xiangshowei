@@ -5,6 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
+
+import com.revature.story.WritingTool;
 
 public class JavaCollectionSolution implements JavaCollection {
 
@@ -32,9 +35,24 @@ public class JavaCollectionSolution implements JavaCollection {
 	}
 
 	@Override
-	public Set<?> sort(Object[] array) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<?> sort(WritingTool[] array) throws IllegalArgumentException {
+		if(array == null) {
+			throw new IllegalArgumentException();
+		}
+		
+		Set<WritingTool> newSet = new TreeSet<WritingTool>();
+		
+		if(array.length == 0) {
+			return newSet;
+		}
+		
+		else {
+			for(WritingTool wt : array) {
+				newSet.add(wt);
+			}
+			
+			return newSet;
+		}
 	}
 
 	@Override
@@ -50,7 +68,7 @@ public class JavaCollectionSolution implements JavaCollection {
 		}
 
 		else if(brackets.length() % 2 != 0){
-			return balanced;
+			return false;
 		}
 
 		else {
@@ -60,7 +78,7 @@ public class JavaCollectionSolution implements JavaCollection {
 			matchedBraces.put('[', ']');
 
 			for(int i = 0; i < brackets.length()/2; i++) {
-				
+
 				/*
 				 * Checking to see if the characters at both ends are actually braces
 				 * 
@@ -74,7 +92,7 @@ public class JavaCollectionSolution implements JavaCollection {
 				if(rightCharacter != '}' && rightCharacter != ')' && rightCharacter != ']') {
 					return false;
 				}
-				
+
 				if(rightCharacter != matchedBraces.get(leftCharacter)) {
 					return false;
 				}
@@ -113,11 +131,9 @@ public class JavaCollectionSolution implements JavaCollection {
 				if(!(firstInt == lastInt)) {
 					return isPalindrome;
 				}
-
-				else {
-					isPalindrome = true;
-				}
 			}
+
+			isPalindrome = true;	
 		}
 
 		return isPalindrome;
@@ -129,11 +145,12 @@ public class JavaCollectionSolution implements JavaCollection {
 			throw new IllegalArgumentException();
 		}
 
+		HashMap<Character, Integer> hm = new HashMap<Character, Integer>();
+		
 		if(string.isEmpty()) {
-			return new HashMap<Character, Integer>();
+			return hm;
 		}
 
-		HashMap<Character, Integer> hm = new HashMap<Character, Integer>();
 		char[] chars = string.toCharArray();
 		for(int i = 0; i < chars.length; i++) {
 			Character curChar = chars[i];
